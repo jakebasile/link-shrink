@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="app_name">Link Shrink</string>
+	<string name="prefsname">Link Shrink Config</string>
+	<string name="commerror">There was a problem communicating with %1$s. Please check your network connection and try again.</string>
+	<string name="urlerror">There was a problem with the URL. Please check the URL and try again.</string>
+	<string name="copiedtoclip">%1$s short link copied to clipboard.</string>
+	<string name="unknownerror">Error submitting URL to %1$s. Please try again later or check configuration.</string>
+	<string name="badbitlyconfig">You did not set a bit.ly username and API key. Unable to shorten link.</string>
+	<string name="description">a simple URL shortener accessed from the browser\'s \"Share Page\" menu.</string>
+	<string name="bitlyinforemind">Be sure to set your bit.ly Username and API key.</string>
+	<string name="prefs_serv_title">Shortening Service</string>
+	<string name="prefs_serv_summ">Select which shortening service to use</string>
+	<string name="prefs_bitlyconfig">bit.ly Configuration</string>
+	<string name="prefs_bitly_name_title">bit.ly Username</string>
+	<string name="prefs_bitly_name_summ">Your bit.ly Username</string>
+	<string name="prefs_bitly_key_title">bit.ly API Key</string>
+	<string name="prefs_bitly_key_summ">Your bit.ly API Key (Not Password!)</string>
+	<string name="prefs_bitly_getkey_title">Get API Key</string>
+	<string name="prefs_bitly_getkey_summ">Select to get your API Key from bit.ly Also available from bit.ly account page.</string>
+	<string name="badconfig">Bad Configuration. Please reset user data for Link Shrink and try again.</string>
+	<string name="shortening_title">Shortening Link</string>
+	<string name="shortening_message">Shortening link with %1$s. Isn\'t this an entertaining screen?</string>
+</resources>

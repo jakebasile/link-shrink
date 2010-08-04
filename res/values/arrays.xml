@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string-array name="serviceNames">
+		<item>is.gd</item>
+		<item>bit.ly</item>
+		<!--<item>goo.gl (beta)</item>-->
+	</string-array>
+	<string-array name="serviceValues">
+		<item>is.gd</item>
+		<item>bit.ly</item>
+		<!--<item>goo.gl</item>-->
+	</string-array>
+</resources>
