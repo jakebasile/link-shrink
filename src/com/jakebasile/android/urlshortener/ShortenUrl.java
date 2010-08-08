@@ -93,13 +93,11 @@ public class ShortenUrl extends Activity
 		}
 		else
 		{
-			// OH SHIT WHAT THE FUCKING SHIT FUCK
 			Toast.makeText(getApplicationContext(), R.string.badconfig, Toast.LENGTH_LONG).show();
 			finish();
 		}
 	}
 
-// <editor-fold defaultstate="collapsed" desc="bit.ly">
 	private void shortenWithBitly(final String longUrl, SharedPreferences prefs)
 	{
 		final String username = prefs.getString("bitlyUsername", null);
@@ -153,9 +151,7 @@ public class ShortenUrl extends Activity
 			}.start();
 		}
 	}
-// </editor-fold>
 
-// <editor-fold defaultstate="collapsed" desc="is.gd">
 	private void shortenWithIsgd(final String longUrl)
 	{
 		String display = String.format(getResources().getString(R.string.shortening_message), ISGD);
@@ -198,8 +194,7 @@ public class ShortenUrl extends Activity
 			}
 		}.start();
 	}
-// </editor-fold>
-// <editor-fold defaultstate="collapsed" desc="goo.gl">
+
 //	private void shortenWithGoogl(String longUrl) throws IOException, URISyntaxException
 //	{
 //		String requestUrl = String.format(GOOGL_URL, URLEncoder.encode(longUrl));
@@ -217,5 +212,4 @@ public class ShortenUrl extends Activity
 //			_shortUrl = null;
 //		}
 //	}
-// </editor-fold>
 }
