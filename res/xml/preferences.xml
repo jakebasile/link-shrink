@@ -1,22 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-	<ListPreference android:title="@string/prefs_serv_title"
-					android:summary="@string/prefs_serv_summ"
-					android:key="service"
-					android:defaultValue="is.gd"
-					android:entries="@array/serviceNames"
-					android:entryValues="@array/serviceValues"/>
-	<PreferenceCategory android:title="@string/prefs_bitlyconfig">
-		<EditTextPreference android:title="@string/prefs_bitly_name_title"
-							android:summary="@string/prefs_bitly_name_summ"
-							android:key="bitlyUsername"
-							android:defaultValue=""/>
-		<EditTextPreference android:title="@string/prefs_bitly_key_title"
-							android:summary="@string/prefs_bitly_key_summ"
-							android:key="bitlyKey"
-							android:defaultValue=""/>
-		<Preference android:title="@string/prefs_bitly_getkey_title"
-					android:summary="@string/prefs_bitly_getkey_summ"
-					android:key="getBitlyKey" />
+<PreferenceScreen
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	<ListPreference
+		android:title="@string/prefs_serv_title"
+		android:summary="@string/prefs_serv_summ"
+		android:key="service"
+		android:defaultValue="is.gd"
+		android:entries="@array/serviceNames"
+		android:entryValues="@array/serviceValues"/>
+	<PreferenceCategory
+		android:title="@string/prefs_bitlyconfig">
+		<EditTextPreference
+			android:title="@string/prefs_bitly_name_title"
+			android:summary="@string/prefs_bitly_name_summ"
+			android:key="bitlyUsername"
+			android:defaultValue=""/>
+		<EditTextPreference
+			android:title="@string/prefs_bitly_key_title"
+			android:summary="@string/prefs_bitly_key_summ"
+			android:key="bitlyKey"
+			android:defaultValue=""/>
+		<Preference
+			android:title="@string/prefs_bitly_getkey_title"
+			android:summary="@string/prefs_bitly_getkey_summ"
+			android:key="getBitlyKey"/>
 	</PreferenceCategory>
 </PreferenceScreen>

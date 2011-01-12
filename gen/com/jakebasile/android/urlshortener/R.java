@@ -9,11 +9,7 @@ package com.jakebasile.android.urlshortener;
 
 public final class R {
     public static final class array {
-        /** <item>goo.gl (beta)</item>
-         */
         public static final int serviceNames=0x7f040000;
-        /** <item>goo.gl</item>
-         */
         public static final int serviceValues=0x7f040001;
     }
     public static final class attr {
