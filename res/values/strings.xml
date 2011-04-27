@@ -16,9 +16,7 @@
 -->
 <resources>
 	<string
-		name="app_name">Link Shrink</string>
-	<string
-		name="prefsname">Link Shrink Config</string>
+		name="app_name">Link Shrink Pro</string>
 	<string
 		name="commerror">There was a problem communicating with %1$s. Please check your network connection and try again.</string>
 	<string
