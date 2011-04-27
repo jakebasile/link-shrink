@@ -1,7 +1,7 @@
 #Link Shrink Readme
 Thanks for checking out **Link Shrink**. I wrote this app because I wanted to learn how to write Android apps. It is a simple link shortener that can be activated from many places in Android. You can long press on the browser's URL bar and select Share, or select Share from the browser menu. It also works with the Youtube app and others. When it is done shortening the link, it is copied to the clipboard. You can select from is.gd, bit.ly, or goo.gl. Bit.ly has account support through their API.
 
-The app is available to download from the Android Market by searching for "Link Shrink", or by [direct download](http://code.jakebasile.com/link-shrink/downloads/linkshrink.apk).
+The app is available to download from the [Android Market](https://market.android.com/details?id=com.jakebasile.android.urlshortener), or by [direct download](http://code.jakebasile.com/link-shrink/downloads/Link-Shrink.apk).
 
 ##How To Use
 I've tried to keep this app very simple, to match its very simple purpose. You can download the app and it will "just work" with is.gd. If you'd like to change what shortening service it uses, simply open the Link Shrink icon from the launcher.
