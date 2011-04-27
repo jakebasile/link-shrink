@@ -1,12 +1,9 @@
-/* 
- * Copyright 2010 Jake Basile
- *
+/*
+ * Copyright 2010-2011 Jake Basile
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
+ * http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -86,29 +83,25 @@ public class ShortenUrl extends Activity
 						{
 							ClipboardManager cb = (ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
 							cb.setText(_shortUrl);
-							String display = String.format(getResources().getString(
-								R.string.copiedtoclip), service);
+							String display = String.format(getResources().getString(R.string.copiedtoclip), service);
 							Toast.makeText(getApplicationContext(), display, Toast.LENGTH_SHORT).show();
 						}
 						else
 						{
-							String display = String.format(getResources().getString(
-								R.string.unknownerror), service);
+							String display = String.format(getResources().getString(R.string.unknownerror), service);
 							Toast.makeText(getApplicationContext(), display, Toast.LENGTH_LONG).show();
 						}
 						break;
 					}
 					case 1:
 					{
-						String display = String.format(
-							getResources().getString(R.string.commerror), service);
+						String display = String.format(getResources().getString(R.string.commerror), service);
 						Toast.makeText(getApplicationContext(), display, Toast.LENGTH_LONG).show();
 						break;
 					}
 					case 2:
 					{
-						String display = String.format(getResources().getString(R.string.urlerror),
-							service);
+						String display = String.format(getResources().getString(R.string.urlerror), service);
 						Toast.makeText(getApplicationContext(), display, Toast.LENGTH_LONG).show();
 						break;
 					}
@@ -147,10 +140,8 @@ public class ShortenUrl extends Activity
 		}
 		else
 		{
-			String display = String.format(getResources().getString(R.string.shortening_message),
-				BITLY);
-			final ProgressDialog pd = ProgressDialog.show(ShortenUrl.this,
-				getResources().getString(R.string.shortening_title), display, true);
+			String display = String.format(getResources().getString(R.string.shortening_message), BITLY);
+			final ProgressDialog pd = ProgressDialog.show(ShortenUrl.this, getResources().getString(R.string.shortening_title), display, true);
 			new Thread()
 			{
 				@Override
@@ -158,8 +149,7 @@ public class ShortenUrl extends Activity
 				{
 					try
 					{
-						String requestUrl = String.format(BITLY_URL, longUrl,
-							username.toLowerCase(), key);
+						String requestUrl = String.format(BITLY_URL, longUrl, username.toLowerCase(), key);
 						ByteArrayOutputStream stream = new ByteArrayOutputStream();
 						HttpClient httpClient = new DefaultHttpClient();
 						HttpGet request = new HttpGet(new URI(requestUrl));
@@ -195,8 +185,7 @@ public class ShortenUrl extends Activity
 	private void shortenWithIsgd(final String longUrl)
 	{
 		String display = String.format(getResources().getString(R.string.shortening_message), ISGD);
-		final ProgressDialog pd = ProgressDialog.show(ShortenUrl.this, getResources().getString(
-			R.string.shortening_title), display, true);
+		final ProgressDialog pd = ProgressDialog.show(ShortenUrl.this, getResources().getString(R.string.shortening_title), display, true);
 		new Thread()
 		{
 			@Override
@@ -239,8 +228,7 @@ public class ShortenUrl extends Activity
 	private void shortenWithGoogl(final String longUrl)
 	{
 		String display = String.format(getResources().getString(R.string.shortening_message), GOOGL);
-		final ProgressDialog pd = ProgressDialog.show(ShortenUrl.this, getResources().getString(
-			R.string.shortening_title), display, true);
+		final ProgressDialog pd = ProgressDialog.show(ShortenUrl.this, getResources().getString(R.string.shortening_title), display, true);
 		new Thread()
 		{
 			@Override

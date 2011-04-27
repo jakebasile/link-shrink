@@ -1,12 +1,9 @@
-/* 
- * Copyright 2010 Jake Basile
- *
+/*
+ * Copyright 2010-2011 Jake Basile
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
+ * http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -38,8 +35,7 @@ public class Configure extends PreferenceActivity
 		{
 			public boolean onPreferenceClick(Preference arg0)
 			{
-				Intent viewIntent = new Intent("android.intent.action.VIEW",
-					Uri.parse("http://bit.ly/a/your_api_key"));
+				Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://bit.ly/a/your_api_key"));
 				startActivity(viewIntent);
 				return true;
 			}
@@ -55,13 +51,10 @@ public class Configure extends PreferenceActivity
 					bitlyUsername.setEnabled(true);
 					bitlyKey.setEnabled(true);
 					getBitlyKey.setEnabled(true);
-					Boolean displayToast = pref.getSharedPreferences().getString("bitlyUsername",
-						"").trim().length() == 0 ||
-						pref.getSharedPreferences().getString("bitlyKey", "").trim().length() == 0;
+					Boolean displayToast = pref.getSharedPreferences().getString("bitlyUsername", "").trim().length() == 0 || pref.getSharedPreferences().getString("bitlyKey", "").trim().length() == 0;
 					if(displayToast)
 					{
-						Toast.makeText(getApplicationContext(), R.string.bitlyinforemind,
-							Toast.LENGTH_LONG).show();
+						Toast.makeText(getApplicationContext(), R.string.bitlyinforemind, Toast.LENGTH_LONG).show();
 					}
 				}
 				else
@@ -79,8 +72,7 @@ public class Configure extends PreferenceActivity
 			bitlyUsername.setEnabled(true);
 			bitlyKey.setEnabled(true);
 			getBitlyKey.setEnabled(true);
-			Boolean displayToast = service.getSharedPreferences().getString("bitlyUsername", "").trim().length() == 0 ||
-				service.getSharedPreferences().getString("bitlyKey", "").trim().length() == 0;
+			Boolean displayToast = service.getSharedPreferences().getString("bitlyUsername", "").trim().length() == 0 || service.getSharedPreferences().getString("bitlyKey", "").trim().length() == 0;
 			if(displayToast)
 			{
 				Toast.makeText(getApplicationContext(), R.string.bitlyinforemind, Toast.LENGTH_LONG).show();
