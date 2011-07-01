@@ -10,7 +10,7 @@ I've tried to keep this app very simple, to match its very simple purpose. You c
 To report an issue, you can [email me](http://www.google.com/recaptcha/mailhide/d?k=011BdB4u1pCLhbUGkJmJVitQ==&c=p-7aRIWqHdpoJP_GrxXH6linWktSJeucW28Fjrj1RSI=) to try to solve it or create a new [issue](http://code.jakebasile.com/linkshrink/issues) - after checking to see that it isn't already there. I will try to fix it soon, but please consider that this project is not my day job. If you really want something fixed and you know how to code, you can try doing it yourself and getting into contact with me to add in your changes.
 
 ## Why Is There Another Link Shrink?
-Because of reasons beyond my control, I am unable to upload updated to the old version of Link Shrink. I left it on the market for a while, but will eventually take it down. Sorry for the confusion, but if you want to latest version, use **Link Shrink Pro**. You can read the details in [this post](http://jakebasile.com/link-shrink-30-available) on my website.
+Because of reasons beyond my control, I am unable to upload updates to the old version of Link Shrink. I left it on the market for a while, but will eventually take it down. Sorry for the confusion, but if you want to latest version, use **Link Shrink Pro**. You can read the details in [this post](http://jakebasile.com/link-shrink-30-available) on my website.
 
 ##A Brief Note on Convoluted Changelogs
 I also started this project to teach myself how to use a DVCS such as Mercurial. I have no experience with these and have made some mistakes. Try to ignore them and let me sweep them under the rug, ok?
