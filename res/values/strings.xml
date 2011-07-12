@@ -55,4 +55,12 @@
 		name="shortening_title">Shortening Link</string>
 	<string
 		name="shortening_message">Shortening link with %1$s. Isn\'t this an entertaining screen?</string>
+	<string
+		name="share_short_url_via">Share Short URL Via:</string>
+	<string
+		name="reshare_on">Automatically shares the shortened URL.</string>
+	<string
+		name="reshare_off">Short URL is copied to clipboard.</string>
+	<string
+		name="auto_reshare">Automatic Reshare</string>
 </resources>
