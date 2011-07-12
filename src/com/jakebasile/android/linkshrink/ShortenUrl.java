@@ -70,6 +70,7 @@ public class ShortenUrl extends Activity
 	private void shorten(SharedPreferences prefs, String longUrl)
 	{
 		final String service = prefs.getString("service", ISGD);
+		final boolean reshare = prefs.getBoolean("reshare", false);
 		_handler = new Handler()
 		{
 			@Override
@@ -81,28 +82,44 @@ public class ShortenUrl extends Activity
 					{
 						if(_shortUrl != null)
 						{
-							ClipboardManager cb = (ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
-							cb.setText(_shortUrl);
-							String display = String.format(getResources().getString(R.string.copiedtoclip), service);
-							Toast.makeText(getApplicationContext(), display, Toast.LENGTH_SHORT).show();
+							if(reshare)
+							{
+								reshareShortened(_shortUrl);
+							}
+							else
+							{
+								ClipboardManager cb = (ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
+								cb.setText(_shortUrl);
+								String display = String.format(
+									getResources().getString(R.string.copiedtoclip),
+									service);
+								Toast.makeText(getApplicationContext(), display,
+									Toast.LENGTH_SHORT).show();
+							}
 						}
 						else
 						{
-							String display = String.format(getResources().getString(R.string.unknownerror), service);
-							Toast.makeText(getApplicationContext(), display, Toast.LENGTH_LONG).show();
+							String display = String.format(
+								getResources().getString(R.string.unknownerror), service);
+							Toast.makeText(getApplicationContext(), display,
+								Toast.LENGTH_LONG).show();
 						}
 						break;
 					}
 					case 1:
 					{
-						String display = String.format(getResources().getString(R.string.commerror), service);
-						Toast.makeText(getApplicationContext(), display, Toast.LENGTH_LONG).show();
+						String display = String.format(
+							getResources().getString(R.string.commerror), service);
+						Toast.makeText(getApplicationContext(), display,
+							Toast.LENGTH_LONG).show();
 						break;
 					}
 					case 2:
 					{
-						String display = String.format(getResources().getString(R.string.urlerror), service);
-						Toast.makeText(getApplicationContext(), display, Toast.LENGTH_LONG).show();
+						String display = String.format(
+							getResources().getString(R.string.urlerror), service);
+						Toast.makeText(getApplicationContext(), display,
+							Toast.LENGTH_LONG).show();
 						break;
 					}
 				}
@@ -134,14 +151,17 @@ public class ShortenUrl extends Activity
 		final String key = prefs.getString("bitlyKey", null);
 		if(username == null || key == null)
 		{
-			Toast.makeText(getApplicationContext(), R.string.badbitlyconfig, Toast.LENGTH_LONG).show();
+			Toast.makeText(getApplicationContext(), R.string.badbitlyconfig,
+				Toast.LENGTH_LONG).show();
 			_shortUrl = null;
 			finish();
 		}
 		else
 		{
-			String display = String.format(getResources().getString(R.string.shortening_message), BITLY);
-			final ProgressDialog pd = ProgressDialog.show(ShortenUrl.this, getResources().getString(R.string.shortening_title), display, true);
+			String display = String.format(
+				getResources().getString(R.string.shortening_message), BITLY);
+			final ProgressDialog pd = ProgressDialog.show(ShortenUrl.this,
+				getResources().getString(R.string.shortening_title), display, true);
 			new Thread()
 			{
 				@Override
@@ -149,7 +169,8 @@ public class ShortenUrl extends Activity
 				{
 					try
 					{
-						String requestUrl = String.format(BITLY_URL, longUrl, username.toLowerCase(), key);
+						String requestUrl = String.format(BITLY_URL, longUrl,
+							username.toLowerCase(), key);
 						ByteArrayOutputStream stream = new ByteArrayOutputStream();
 						HttpClient httpClient = new DefaultHttpClient();
 						HttpGet request = new HttpGet(new URI(requestUrl));
@@ -184,8 +205,10 @@ public class ShortenUrl extends Activity
 
 	private void shortenWithIsgd(final String longUrl)
 	{
-		String display = String.format(getResources().getString(R.string.shortening_message), ISGD);
-		final ProgressDialog pd = ProgressDialog.show(ShortenUrl.this, getResources().getString(R.string.shortening_title), display, true);
+		String display = String.format(
+			getResources().getString(R.string.shortening_message), ISGD);
+		final ProgressDialog pd = ProgressDialog.show(ShortenUrl.this,
+			getResources().getString(R.string.shortening_title), display, true);
 		new Thread()
 		{
 			@Override
@@ -193,7 +216,8 @@ public class ShortenUrl extends Activity
 			{
 				try
 				{
-					String requestUrl = String.format(ISGD_URL, URLEncoder.encode(longUrl));
+					String requestUrl = String.format(ISGD_URL,
+						URLEncoder.encode(longUrl));
 					ByteArrayOutputStream stream = new ByteArrayOutputStream();
 					HttpClient httpClient = new DefaultHttpClient();
 					HttpGet request = new HttpGet(new URI(requestUrl));
@@ -227,8 +251,10 @@ public class ShortenUrl extends Activity
 
 	private void shortenWithGoogl(final String longUrl)
 	{
-		String display = String.format(getResources().getString(R.string.shortening_message), GOOGL);
-		final ProgressDialog pd = ProgressDialog.show(ShortenUrl.this, getResources().getString(R.string.shortening_title), display, true);
+		String display = String.format(
+			getResources().getString(R.string.shortening_message), GOOGL);
+		final ProgressDialog pd = ProgressDialog.show(ShortenUrl.this,
+			getResources().getString(R.string.shortening_title), display, true);
 		new Thread()
 		{
 			@Override
@@ -280,5 +306,38 @@ public class ShortenUrl extends Activity
 				}
 			}
 		}.start();
+	}
+
+	private void reshareShortened(String shortened)
+	{
+		Intent intent = new Intent();
+		intent.setAction(Intent.ACTION_SEND);
+		intent.addCategory(Intent.CATEGORY_DEFAULT);
+		intent.setType("text/plain");
+		intent.putExtra(Intent.EXTRA_TEXT, shortened);
+		// PackageManager pm = getPackageManager();
+		// List<ResolveInfo> resultsList = pm.queryIntentActivities(intent, 0);
+		// String[] names = new String[resultsList.size() - 1];
+		// ResolveInfo[] results = new ResolveInfo[resultsList.size() -1 ];
+		// int index = 0;
+		// for(ResolveInfo info : resultsList)
+		// {
+		// if(info.activityInfo.packageName != getPackageName())
+		// {
+		// names[index] = (String)info.activityInfo.loadLabel(pm);
+		// results[index] = info;
+		// index++;
+		// }
+		// }
+		// AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		// builder.setItems(names, new DialogInterface.OnClickListener()
+		// {
+		// @Override
+		// public void onClick(DialogInterface dialog, int which)
+		// {
+		// }
+		// });
+		startActivity(Intent.createChooser(intent,
+			getString(R.string.share_short_url_via)));
 	}
 }
