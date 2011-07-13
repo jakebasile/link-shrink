@@ -28,18 +28,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
-import android.text.ClipboardManager;
 import android.util.Log;
 import android.widget.Toast;
 
-public class ShortenUrl extends Activity
+public abstract class ShortenUrl extends Activity
 {
 	private static final String ISGD = "is.gd";
 
@@ -55,22 +53,26 @@ public class ShortenUrl extends Activity
 
 	private Handler _handler;
 
-	protected String _shortUrl;
+	private String _shortUrl;
+
+	protected boolean reshare;
 
 	@Override
 	public void onCreate(Bundle icicle)
 	{
 		super.onCreate(icicle);
+		reshare = false;
 		Intent intent = getIntent();
 		Bundle extras = intent.getExtras();
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 		shorten(prefs, extras.getString(Intent.EXTRA_TEXT));
 	}
 
+	protected abstract void OnUrlShortened(String shortUrl);
+
 	private void shorten(SharedPreferences prefs, String longUrl)
 	{
 		final String service = prefs.getString("service", ISGD);
-		final boolean reshare = prefs.getBoolean("reshare", false);
 		_handler = new Handler()
 		{
 			@Override
@@ -82,20 +84,7 @@ public class ShortenUrl extends Activity
 					{
 						if(_shortUrl != null)
 						{
-							if(reshare)
-							{
-								reshareShortened(_shortUrl);
-							}
-							else
-							{
-								ClipboardManager cb = (ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
-								cb.setText(_shortUrl);
-								String display = String.format(
-									getResources().getString(R.string.copiedtoclip),
-									service);
-								Toast.makeText(getApplicationContext(), display,
-									Toast.LENGTH_SHORT).show();
-							}
+							OnUrlShortened(_shortUrl);
 						}
 						else
 						{
@@ -306,38 +295,5 @@ public class ShortenUrl extends Activity
 				}
 			}
 		}.start();
-	}
-
-	private void reshareShortened(String shortened)
-	{
-		Intent intent = new Intent();
-		intent.setAction(Intent.ACTION_SEND);
-		intent.addCategory(Intent.CATEGORY_DEFAULT);
-		intent.setType("text/plain");
-		intent.putExtra(Intent.EXTRA_TEXT, shortened);
-		// PackageManager pm = getPackageManager();
-		// List<ResolveInfo> resultsList = pm.queryIntentActivities(intent, 0);
-		// String[] names = new String[resultsList.size() - 1];
-		// ResolveInfo[] results = new ResolveInfo[resultsList.size() -1 ];
-		// int index = 0;
-		// for(ResolveInfo info : resultsList)
-		// {
-		// if(info.activityInfo.packageName != getPackageName())
-		// {
-		// names[index] = (String)info.activityInfo.loadLabel(pm);
-		// results[index] = info;
-		// index++;
-		// }
-		// }
-		// AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		// builder.setItems(names, new DialogInterface.OnClickListener()
-		// {
-		// @Override
-		// public void onClick(DialogInterface dialog, int which)
-		// {
-		// }
-		// });
-		startActivity(Intent.createChooser(intent,
-			getString(R.string.share_short_url_via)));
 	}
 }

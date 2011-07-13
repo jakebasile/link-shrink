@@ -23,12 +23,6 @@
 		android:defaultValue="goo.gl"
 		android:entries="@array/serviceNames"
 		android:entryValues="@array/serviceValues" />
-	<CheckBoxPreference
-		android:key="reshare"
-		android:summaryOff="@string/reshare_off"
-		android:summaryOn="@string/reshare_on"
-		android:title="@string/auto_reshare"
-		android:defaultValue="false" />
 	<PreferenceCategory
 		android:title="@string/prefs_bitlyconfig">
 		<EditTextPreference

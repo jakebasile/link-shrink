@@ -58,9 +58,7 @@
 	<string
 		name="share_short_url_via">Share Short URL Via:</string>
 	<string
-		name="reshare_on">Automatically shares the shortened URL.</string>
+		name="link_shrink_reshare">Link Shrink + Share</string>
 	<string
-		name="reshare_off">Short URL is copied to clipboard.</string>
-	<string
-		name="auto_reshare">Automatic Reshare</string>
+		name="link_shrink_copy">Link Shrink + Copy</string>
 </resources>

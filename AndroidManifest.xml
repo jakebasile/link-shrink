@@ -21,9 +21,9 @@
 	android:versionName="3.0"
 	android:versionCode="1">
 	<uses-sdk
-		android:minSdkVersion="3"/>
+		android:minSdkVersion="3" />
 	<uses-permission
-		android:name="android.permission.INTERNET"/>
+		android:name="android.permission.INTERNET" />
 	<application
 		android:description="@string/description"
 		android:label="@string/app_name"
@@ -36,25 +36,39 @@
 			android:excludeFromRecents="false">
 			<intent-filter>
 				<action
-					android:name="android.intent.action.MAIN"/>
+					android:name="android.intent.action.MAIN" />
 				<category
-					android:name="android.intent.category.LAUNCHER"/>
+					android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
 		<activity
 			android:clearTaskOnLaunch="true"
-			android:name=".ShortenUrl"
 			android:excludeFromRecents="true"
 			android:stateNotNeeded="true"
 			android:theme="@android:style/Theme.NoDisplay"
-			android:noHistory="true">
+			android:noHistory="true"
+			android:label="@string/link_shrink_copy"
+			android:name="ShortenAndCopyUrl">
 			<intent-filter>
 				<action
-					android:name="android.intent.action.SEND"/>
+					android:name="android.intent.action.SEND" />
 				<category
-					android:name="android.intent.category.DEFAULT"/>
+					android:name="android.intent.category.DEFAULT" />
 				<data
-					android:mimeType="text/plain"/>
+					android:mimeType="text/plain" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="ShortenAndShareUrl"
+			android:theme="@android:style/Theme.NoDisplay"
+			android:label="@string/link_shrink_reshare">
+			<intent-filter>
+				<action
+					android:name="android.intent.action.SEND" />
+				<category
+					android:name="android.intent.category.DEFAULT" />
+				<data
+					android:mimeType="text/plain" />
 			</intent-filter>
 		</activity>
 	</application>
