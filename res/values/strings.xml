@@ -61,4 +61,8 @@
 		name="link_shrink_reshare">Link Shrink + Share</string>
 	<string
 		name="link_shrink_copy">Link Shrink + Copy</string>
+	<string
+		name="link_already_shortened_share">This link is already shortened, select another share recipient.</string>
+	<string
+		name="link_already_shortened_copy">This link is already shortened, it has been copied to your clipboard.</string>
 </resources>
