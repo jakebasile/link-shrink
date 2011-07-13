@@ -9,7 +9,20 @@ import android.widget.Toast;
 public final class ShortenAndCopyUrl extends ShortenUrl
 {
 	@Override
-	protected void OnUrlShortened(String shortUrl)
+	protected void onUrlShortened(String shortUrl)
+	{
+		String display = copy(shortUrl);
+		Toast.makeText(getApplicationContext(), display, Toast.LENGTH_SHORT).show();
+	}
+
+	@Override
+	protected void onUrlAlreadyShortened(String shortUrl)
+	{
+		Toast.makeText(this, R.string.link_already_shortened_copy, Toast.LENGTH_LONG).show();
+		copy(shortUrl);
+	}
+
+	private String copy(String shortUrl)
 	{
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 		String service = prefs.getString("service", null);
@@ -17,6 +30,6 @@ public final class ShortenAndCopyUrl extends ShortenUrl
 		cb.setText(shortUrl);
 		String display = String.format(getResources().getString(R.string.copiedtoclip),
 			service);
-		Toast.makeText(getApplicationContext(), display, Toast.LENGTH_SHORT).show();
+		return display;
 	}
 }

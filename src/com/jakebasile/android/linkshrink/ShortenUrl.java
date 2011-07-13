@@ -30,6 +30,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -68,11 +69,20 @@ public abstract class ShortenUrl extends Activity
 		shorten(prefs, extras.getString(Intent.EXTRA_TEXT));
 	}
 
-	protected abstract void OnUrlShortened(String shortUrl);
+	protected abstract void onUrlShortened(String shortUrl);
+
+	protected abstract void onUrlAlreadyShortened(String shortUrl);
 
 	private void shorten(SharedPreferences prefs, String longUrl)
 	{
-		final String service = prefs.getString("service", ISGD);
+		final String service = prefs.getString("service", GOOGL);
+		String host = Uri.parse(longUrl).getHost();
+		if(host.endsWith(service))
+		{
+			onUrlAlreadyShortened(longUrl);
+			finish();
+			return;
+		}
 		_handler = new Handler()
 		{
 			@Override
@@ -84,7 +94,7 @@ public abstract class ShortenUrl extends Activity
 					{
 						if(_shortUrl != null)
 						{
-							OnUrlShortened(_shortUrl);
+							onUrlShortened(_shortUrl);
 						}
 						else
 						{
@@ -113,6 +123,7 @@ public abstract class ShortenUrl extends Activity
 					}
 				}
 				finish();
+				return;
 			}
 		};
 		if(service.equalsIgnoreCase(ISGD))
