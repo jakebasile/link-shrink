@@ -20,7 +20,7 @@
 		android:title="@string/prefs_serv_title"
 		android:summary="@string/prefs_serv_summ"
 		android:key="service"
-		android:defaultValue="is.gd"
+		android:defaultValue="goo.gl"
 		android:entries="@array/serviceNames"
 		android:entryValues="@array/serviceValues" />
 	<CheckBoxPreference
