@@ -65,4 +65,6 @@
 		name="link_already_shortened_share">This link is already shortened, select another share recipient.</string>
 	<string
 		name="link_already_shortened_copy">This link is already shortened, it has been copied to your clipboard.</string>
+	<string
+		name="bad_input_toast">"Link Shrink couldn't shorten that. Try again with a URL."</string>
 </resources>
