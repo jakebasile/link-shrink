@@ -76,10 +76,27 @@ public abstract class ShortenUrl extends Activity
 
 	protected abstract void onUrlAlreadyShortened(String shortUrl);
 
+	private void showBadInputToast()
+	{
+		Toast.makeText(this, R.string.bad_input_toast, Toast.LENGTH_LONG).show();
+		finish();
+	}
+
 	private void shorten(SharedPreferences prefs, String longUrl)
 	{
+		// guard against bad input.
+		if(longUrl == null || longUrl.length() == 0)
+		{
+			showBadInputToast();
+			return;
+		}
 		final String service = prefs.getString("service", GOOGL);
 		String host = Uri.parse(longUrl).getHost();
+		if(host == null || host.length() == 0)
+		{
+			showBadInputToast();
+			return;
+		}
 		if(host.endsWith(service))
 		{
 			onUrlAlreadyShortened(longUrl);
