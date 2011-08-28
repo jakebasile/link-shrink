@@ -1,9 +1,12 @@
 /*
  * Copyright 2010-2011 Jake Basile
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -98,8 +101,8 @@ public abstract class ShortenUrl extends Activity
 						}
 						else
 						{
-							String display = String.format(
-								getResources().getString(R.string.unknownerror), service);
+							String display = String.format(getResources().getString(
+								R.string.unknownerror), service);
 							Toast.makeText(getApplicationContext(), display,
 								Toast.LENGTH_LONG).show();
 						}
@@ -107,16 +110,16 @@ public abstract class ShortenUrl extends Activity
 					}
 					case 1:
 					{
-						String display = String.format(
-							getResources().getString(R.string.commerror), service);
+						String display = String.format(getResources().getString(
+							R.string.commerror), service);
 						Toast.makeText(getApplicationContext(), display,
 							Toast.LENGTH_LONG).show();
 						break;
 					}
 					case 2:
 					{
-						String display = String.format(
-							getResources().getString(R.string.urlerror), service);
+						String display = String.format(getResources().getString(
+							R.string.urlerror), service);
 						Toast.makeText(getApplicationContext(), display,
 							Toast.LENGTH_LONG).show();
 						break;
@@ -158,8 +161,8 @@ public abstract class ShortenUrl extends Activity
 		}
 		else
 		{
-			String display = String.format(
-				getResources().getString(R.string.shortening_message), BITLY);
+			String display = String.format(getResources().getString(
+				R.string.shortening_message), BITLY);
 			final ProgressDialog pd = ProgressDialog.show(ShortenUrl.this,
 				getResources().getString(R.string.shortening_title), display, true);
 			new Thread()
@@ -205,8 +208,8 @@ public abstract class ShortenUrl extends Activity
 
 	private void shortenWithIsgd(final String longUrl)
 	{
-		String display = String.format(
-			getResources().getString(R.string.shortening_message), ISGD);
+		String display = String.format(getResources().getString(
+			R.string.shortening_message), ISGD);
 		final ProgressDialog pd = ProgressDialog.show(ShortenUrl.this,
 			getResources().getString(R.string.shortening_title), display, true);
 		new Thread()
@@ -251,8 +254,8 @@ public abstract class ShortenUrl extends Activity
 
 	private void shortenWithGoogl(final String longUrl)
 	{
-		String display = String.format(
-			getResources().getString(R.string.shortening_message), GOOGL);
+		String display = String.format(getResources().getString(
+			R.string.shortening_message), GOOGL);
 		final ProgressDialog pd = ProgressDialog.show(ShortenUrl.this,
 			getResources().getString(R.string.shortening_title), display, true);
 		new Thread()

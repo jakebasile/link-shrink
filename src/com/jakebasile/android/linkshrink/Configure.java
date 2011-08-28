@@ -1,9 +1,12 @@
 /*
  * Copyright 2010-2011 Jake Basile
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -28,9 +31,9 @@ public class Configure extends PreferenceActivity
 	{
 		super.onCreate(icicle);
 		addPreferencesFromResource(R.xml.preferences);
-		final Preference bitlyUsername = (Preference)this.findPreference("bitlyUsername");
-		final Preference bitlyKey = (Preference)this.findPreference("bitlyKey");
-		final Preference getBitlyKey = (Preference)this.findPreference("getBitlyKey");
+		final Preference bitlyUsername = findPreference("bitlyUsername");
+		final Preference bitlyKey = findPreference("bitlyKey");
+		final Preference getBitlyKey = findPreference("getBitlyKey");
 		getBitlyKey.setOnPreferenceClickListener(new OnPreferenceClickListener()
 		{
 			public boolean onPreferenceClick(Preference arg0)
@@ -40,7 +43,7 @@ public class Configure extends PreferenceActivity
 				return true;
 			}
 		});
-		Preference service = (Preference)this.findPreference("service");
+		Preference service = findPreference("service");
 		service.setOnPreferenceChangeListener(new OnPreferenceChangeListener()
 		{
 			public boolean onPreferenceChange(Preference pref, Object newValue)
@@ -75,7 +78,8 @@ public class Configure extends PreferenceActivity
 			Boolean displayToast = service.getSharedPreferences().getString("bitlyUsername", "").trim().length() == 0 || service.getSharedPreferences().getString("bitlyKey", "").trim().length() == 0;
 			if(displayToast)
 			{
-				Toast.makeText(getApplicationContext(), R.string.bitlyinforemind, Toast.LENGTH_LONG).show();
+				Toast.makeText(getApplicationContext(), R.string.bitlyinforemind,
+					Toast.LENGTH_LONG).show();
 			}
 		}
 		else
