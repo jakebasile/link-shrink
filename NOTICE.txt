@@ -1,2 +1,3 @@
 Copyright 2010-2011 Jake Basile (http://jakebasile.com)
-Source @ http://code.jakebasile.com/link-shrink/
+Source @ https://github.com/jakebasile/link-shrink
+
